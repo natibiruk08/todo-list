@@ -5,7 +5,9 @@ function AddTodo() {
     <form>
       <HStack mt={8}>
         <Input variant={"filled"} placeholder="type here" />
-        <Button colorScheme="pink">Add Todo</Button>
+        <Button colorScheme="pink" px={5}>
+          Add Todo
+        </Button>
       </HStack>
     </form>
   );
