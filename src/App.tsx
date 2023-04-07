@@ -1,6 +1,7 @@
 import { Heading, IconButton, VStack } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         Todo Application
       </Heading>
       <TodoList />
+      <AddTodo />
     </VStack>
   );
 }
