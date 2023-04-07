@@ -6,29 +6,20 @@ import { useEffect, useState } from "react";
 import { Todo } from "./types/Todo";
 
 function App() {
-  const initialTodos = [
-    {
-      id: 1,
-      body: "get bread",
-    },
-    {
-      id: 2,
-      body: "get butter",
-    },
-    {
-      id: 3,
-      body: "get water",
-    },
-  ];
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos") || "{}") || []
+  );
 
-  const [todos, setTodos] = useState(initialTodos);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(todo: Todo) {
     setTodos([...todos, todo]);
   }
 
   function deleteTodo(id: number) {
-    const newTodos = todos.filter((todo) => {
+    const newTodos = todos.filter((todo: Todo) => {
       return todo.id !== id;
     });
 
