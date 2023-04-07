@@ -3,6 +3,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import { useEffect, useState } from "react";
+import { Todo } from "./types/Todo";
 
 function App() {
   const initialTodos = [
@@ -21,6 +22,10 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(initialTodos);
+
+  function addTodo(todo: Todo) {
+    setTodos([...todos, todo]);
+  }
 
   function deleteTodo(id: number) {
     const newTodos = todos.filter((todo) => {
@@ -49,7 +54,7 @@ function App() {
         Todo Application
       </Heading>
       <TodoList todos={todos} deleteTodo={deleteTodo} />
-      <AddTodo />
+      <AddTodo addTodo={addTodo} />
     </VStack>
   );
 }

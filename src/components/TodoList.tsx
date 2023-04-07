@@ -1,4 +1,5 @@
 import {
+  Badge,
   HStack,
   IconButton,
   Spacer,
@@ -7,18 +8,22 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
-
-type TodoList = {
-  id: number;
-  body: string;
-};
+import { Todo } from "../types/Todo";
 
 type TodoListProps = {
-  todos: TodoList[];
+  todos: Todo[];
   deleteTodo: Function;
 };
 
 function TodoList({ todos, deleteTodo }: TodoListProps) {
+  if (!todos.length) {
+    return (
+      <Badge colorScheme="green" p={4} m={4} borderRadius={"lg"}>
+        No Todos, YAY!!!
+      </Badge>
+    );
+  }
+
   return (
     <VStack
       divider={<StackDivider />}
